@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>问题库列表 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题库列表 问题：vmdk格式的虚机，转成qcow2格式，上传到openstack平台后，启动时，报错，无法找到硬盘  处理：虚机启动时，进入急救模式，执行dracut -f ，重新刷下initramfs，然后再启动，即可。   问题：f5 后面挂了10个nginx，f5将流量分发到nginx上，做负载均衡，结果，f5到nginx经常性丢包，抓包分析，看出是f5跟nginx的tcp连接经常超时，发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题库列表">
+<meta property="og:url" content="http://yoursite.com/2019/07/30/问题库列表/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="问题库列表 问题：vmdk格式的虚机，转成qcow2格式，上传到openstack平台后，启动时，报错，无法找到硬盘  处理：虚机启动时，进入急救模式，执行dracut -f ，重新刷下initramfs，然后再启动，即可。   问题：f5 后面挂了10个nginx，f5将流量分发到nginx上，做负载均衡，结果，f5到nginx经常性丢包，抓包分析，看出是f5跟nginx的tcp连接经常超时，发">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-30T15:35:36.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="问题库列表">
+<meta name="twitter:description" content="问题库列表 问题：vmdk格式的虚机，转成qcow2格式，上传到openstack平台后，启动时，报错，无法找到硬盘  处理：虚机启动时，进入急救模式，执行dracut -f ，重新刷下initramfs，然后再启动，即可。   问题：f5 后面挂了10个nginx，f5将流量分发到nginx上，做负载均衡，结果，f5到nginx经常性丢包，抓包分析，看出是f5跟nginx的tcp连接经常超时，发">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-问题库列表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/30/问题库列表/" class="article-date">
+  <time datetime="2019-07-30T15:35:02.000Z" itemprop="datePublished">2019-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      问题库列表
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题库列表"><a href="#问题库列表" class="headerlink" title="问题库列表"></a>问题库列表</h1><ul>
+<li><p>问题：vmdk格式的虚机，转成qcow2格式，上传到openstack平台后，启动时，报错，无法找到硬盘</p>
+<ul>
+<li>处理：虚机启动时，进入急救模式，执行dracut -f ，重新刷下initramfs，然后再启动，即可。</li>
+</ul>
+</li>
+<li><p>问题：f5 后面挂了10个nginx，f5将流量分发到nginx上，做负载均衡，结果，f5到nginx经常性丢包，抓包分析，看出是f5跟nginx的tcp连接经常超时，发生重传，</p>
+<ul>
+<li>解决：经抓包分析，nginx虚机经常性的重置tcp连接，发现在sysctl.conf里，启用了tcp_tw_recyle=1这一选项，经查，这一选项在nat场景下极易出问题，前方可能有不同的访问源来访问f5，且时间戳可能不一样，但f5收到请求后，将来源的IP转换成f5的地址向nginx继续请求，但却保留了原IP地址的时间戳，导致nginx收到同一个IP的时间戳不一致，从而丢掉旧的时间戳来响应新的时间戳的数据包，导致tcp连接中断，只所以有些问题，就是因为开启了tw_recyle这一选项，本来保持连接的tcp，很快被回收掉。将tcp_tw_recyle=0进行关闭，问题解决。</li>
+</ul>
+</li>
+<li><p>问题：新建的业务系统智能运检的容器集群的prometheus容器，经常性的发生oom 导致crash，从而无法在云服的节点里查看节点的内存cpu使用情况</p>
+<ul>
+<li>解决：经排查，容器限制的内存大小为2G，于是将deployment里的2G内存大小修改为4G，之后暂时运行正常，没有发生crash</li>
+</ul>
+</li>
+<li><p>问题：云服里fluentd容器，经常crash，无法启动</p>
+<ul>
+<li>解决：经查，日志里是报错8900（可能是这个）端口没有监听，导致自身检查时，发现没有端口监听就退出了。deployment里仍然是配了2G的内存，后来经调整: 1 是将deployment里的内存，调整为4G，二是将健康检查的5秒调整为30秒，加大检查时长，避免因时间过短，而导致容器退出</li>
+</ul>
+</li>
+<li><p>问题：通过云服部署容器时，经常失败，经查，发现是拉取不到镜像，每次拉取都需要登录，之后就卡住</p>
+<ul>
+<li>解决：经查发现，每次登录后，k8s里的secret里保存registry里的秘钥信息，但是第一次登录之后，能生成相应的key，之后就会被还原成isc里面用户信息的key，用户的key和registy里的key不一致，导致登录registry失败。此时，需要修改 harbor节点的里的配置文件，/data/config/config.json<br>将里面的external_auth_service_url: “http//<em>.</em>.<em>.</em>:10000/api/v2/users/login”   替换成：external_auth_service_url: “http//<em>.</em>.<em>.</em>:10000/api/v2/users/3rd/login”  然后重启下harbor就可以了。</li>
+</ul>
+</li>
+<li><p>问题：执行docker ps -a 时无任何输出，表象是命令卡住，</p>
+<ul>
+<li>解决：经查，发现是systemd成为僵尸进程，解决问题，只能重启机器，但推测原因是因为容器退出，导致父进程没有响应，从而致使systemd僵死。最终解决是升级了下内核，由centos7.4升级到7.6,并且彻底解决容器经常crash的问题</li>
+</ul>
+</li>
+<li><p>问题：新上架的服务器，本来想用做跳板机，需要二张网卡，由于交换机侧是千兆光口，所以服务器侧也需要千兆光口，在使用南瑞的服务器时，发现接上千兆光模块后，网卡无法up，指示灯不亮。</p>
+<ul>
+<li>解决：经查，换成华为2488服务器后，不存在此问题，但南瑞服务器，不支持千兆光模块，只能放弃使用千兆光模块。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/30/问题库列表/" data-id="cjypzh0h50003owu9514jvx1k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/30/paper-with-code/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">paper with code</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/07/30/问题库列表/">问题库列表</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/paper-with-code/">paper with code</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2019/07/30/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
